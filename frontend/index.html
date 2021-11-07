@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script-maquina.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ciclo 3</title>
+</head>
+<body>
+    <h1 class="title" id="title1">Reservación de Ortesis</h1>
+    <div class="div-general">
+
+        <div class="div-menu">
+            <div class="tabla1">
+                <table>
+                    <tr >
+                        <td class="i i1"><i class="fas fa-crutch"></i></td>
+                        <td class="text" onclick="clic('.ortopedic', '.i1')">
+                            <div class="over"></div>
+                            <span class="text2">Ortesis</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="i i2">
+                            <i class="fas fa-th-list"></i>
+                        </td>
+                        <td class="text" onclick="clic('.category', '.i2')">
+                            <div class="over"></div>
+                            <span class="text2">Categoría</span>
+                        </td>
+                    </tr>
+                    <tr >
+                        <td class="i i3">
+                            <i class="fas fa-user-circle"></i>
+                        </td>
+                        <td class="text" onclick="clic('.client', '.i3')">
+                            <div class="over"></div>
+                            <span class="text2">Cliente</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="i i4">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </td>
+                        <td class="text" onclick="clic('.message', '.i4')" >
+                            <div class="over"></div>
+                            <span class="text2">Mensaje</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="i i5">
+                            <i class="far fa-calendar-check"></i>
+                        </td>
+                        <td class="text text-res" onclick="clic('.reservation', '.i5')">
+                            <div class="over"></div>
+                            <span class="text2">Reserva</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="i i6">
+                            <i class="fas fa-clipboard-list"></i>
+                        </td>
+                        <td class="text text-res" onclick="clic('.reportes', '.i6'); getReports()">
+                            <div class="over"></div>
+                            <span class="text2">Reportes</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+
+        <div class="div ortopedic">
+            <h2>• Ortesis</h2>
+            <div class="div-inputs">
+                <input class="inp" type="number" id="idOrt" placeholder="Id">
+                <input class="inp" type="text" id="nameOrt" placeholder="Nombre">
+                <input class="inp" type="text" id="brandOrt" placeholder="Marca">
+                <input class="inp" type="number" id="yearOrt"  placeholder="Año">
+                <input class="inp" type="text" id="descripOrt"  placeholder="Descripción">
+                <input class="inp" type="number" id="idCatOrt"  placeholder="Id categoría">
+            </div>
+            <div class="div-buttons">
+                <button class="butt" onclick="getOrtopedic()">Detalles</button>
+                <button class="butt " onclick="PostPutDelOrtopedic('POST')">Guardar</button>
+                <button class="butt" onclick="PostPutDelOrtopedic('PUT')">Actualizar</button>
+            </div>
+            <div class="div-tabla">
+                <table>
+                    <thead>
+                        <tr class="tr">
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Marca</th>
+                            <th>Año</th>
+                            <th>Descripción</th>
+                            <th>Id Ca.</th>
+                            <th>Id Me.</th>
+                            <th>Id Re.</th>
+                            <th> <button class="butt del" onclick="PostPutDelOrtopedic('DELETE')">Borrar</button></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyOrt">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="div category">
+            <h2>• Categoria</h2>
+            <div class="div-inputs" >
+                <input class="inp" type="number" id="idCat"  placeholder="Id">
+                <input class="inp" type="text" id="nameCat"  placeholder="Nombre">
+                <input class="inp" type="text" id="descripCat"  placeholder="Descripción">
+            </div>
+            <div class="div-buttons">
+                <button class="butt" onclick="getCategory()">Detalles</button>
+                <button class="butt " onclick="PostPutDelCategory('POST')">Guardar</button>
+                <button class="butt" onclick="PostPutDelCategory('PUT')">Actualizar</button>
+            </div>
+            <div class="div-tabla"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Id Or.</th>
+                            <th><button class="butt del" onclick="PostPutDelCategory('DELETE')">Borrar</button></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyCat">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="div client"> 
+            <h2>• Cliente</h2>
+            <div class="div-inputs">
+                <input type="number" id="idCli" class="inp" placeholder="Id">
+                <input type="text" id="emailCli" class="inp" placeholder="Email">
+                <input type="password" id="passCli" class="inp" placeholder="Contraseña">
+                <input type="text" id="nameCli" class="inp" placeholder="Nombre">
+                <input type="number" id="ageCli" class="inp" placeholder="Edad">
+            </div>
+            <div>
+                <button class="butt" onclick="getClient()">Detalles</button>
+                <button class="butt " onclick="PostPutDelClient('POST')">Guardar</button>
+                <button class="butt" onclick="PostPutDelClient('PUT')">Actualizar</button>
+            </div>
+            <div class="div-tabla"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Contraseña</th> 
+                            <th>Nombre</th>
+                            <th>Edad</th>  
+                            <th>Id Me.</th>
+                            <th>Id Re.</th>      
+                            <th><button class="butt del" onclick="PostPutDelClient('DELETE')">Borrar</button></th>             
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyClient">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="div message">
+            <h2>• Mensaje</h2>
+            <div class="div-inputs">
+                <input type="number" id="idMess" class="inp" placeholder="Id">
+                <input type="text" id="messageMess" class="inp" placeholder="Mensaje">
+                <input type="number" id="idOrtMess" class="inp" placeholder="Id Ortesis">
+                <input type="number" id="idCliMess" class="inp" placeholder="Id Cliente">
+            </div>
+            <div>
+                <button class="butt" onclick="getMessage()">Detalles</button>
+                <button class="butt " onclick="PostPutDelMessage('POST')">Guardar</button>
+                <button class="butt" onclick="PostPutDelMessage('PUT')">Actualizar</button>
+            </div>
+            <div class="div-tabla"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Mensaje</th> 
+                            <th>Id Cl.</th>
+                            <th>Id Re.</th>   
+                            <th><button class="butt del"
+                                onclick="PostPutDelMessage('DELETE')">Borrar</button></th>             
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyMess">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="div reservation">
+            <h2>• Reserva</h2>
+            <div class="div-inputs">
+                <input type="number" id="idRes" class="inp" placeholder="Id">
+                <input type="text" id="startRes" class="inp" placeholder="Fecha Inicio">
+                <input type="text" id="devoRes" class="inp" placeholder="Fecha Devolución">
+                <input type="text" id="statusRes" class="inp" placeholder="Estado">
+                <input type="number" id="idOrtRes" class="inp" placeholder="Id Ortesis">
+                <input type="number" id="idCliRes" class="inp" placeholder="Id Cliente">
+            </div>
+            <button class="butt" onclick="getReservation()">Detalles</button>
+            <button class="butt " onclick="PostPutDelReservation('POST')">Guardar</button>
+            <button class="butt" onclick="PostPutDelReservation('PUT')">Actualizar</button>
+    
+            <div class="div-tabla"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Devo.</th> 
+                            <th>Estado</th>
+                            <th>Id Or.</th>
+                            <th>Id Cl.</th>
+                            <th>Id Sc.</th>
+                            <th><button class="butt del" onclick="PostPutDelReservation('DELETE')">Borrar</button></th>             
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyRes">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="div reportes">
+            <h2>• Reservas por fecha:</h2>
+            <div class="div-inputs">
+                <input type="text" id="dateOne" class="inp" placeholder="Primera fecha">
+                <input type="text" id="dateTwo" class="inp" placeholder="Segunda fecha">
+            </div>
+            <button class="butt butt-obt" onclick="getReportDates()">Obtener</button>
+    
+            <div class="div-tabla">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Devo.</th> 
+                            <th>Estado</th>
+                            <th>Id Or.</th>
+                            <th>Id Cl.</th>
+                            <th>Id Sc.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyRepDate">
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+
+            <h2>• Mejores clientes:</h2>
+            <div class="div-tabla">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Total Re.</th>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Contraseña</th> 
+                            <th>Nombre</th>
+                            <th>Edad</th>  
+                            <th>Id Me.</th>
+                            <th>Id Re.</th>            
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyRepClient">
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+
+            <h2>• Estados de reservas:</h2>
+            <div class="div-tabla"> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Completadas</th>
+                            <th>Canceladas</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyRepStatus">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

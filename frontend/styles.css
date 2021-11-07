@@ -1,0 +1,196 @@
+/* cuerpo principal */
+*{
+    box-sizing: border-box;
+}
+body {
+    text-align: center;
+    background: linear-gradient(-45deg, #3134ff, #982aff, #ff4463, #FFA14A, #FFF041);
+    background-size: 400% 400%;
+	animation: gradient 10s ease infinite;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.title{
+    margin: 15px;
+    font-family: Century Gothic;
+    font-size: 45px;
+}
+.div-general{
+    position: relative;
+    display: inline-block;
+    min-height: 420px;
+    background-color: #eeeeee;
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px 1px rgb(194, 194, 194) inset;
+}
+
+/* 
+    divs dentro del general
+*/
+/* menu */
+.div-menu{
+    position: absolute;
+    height: 100%;
+    width: 55px;
+    overflow: hidden;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    font-size: 30px;/* tamño iconos */
+    background-color: #202020;
+    color: rgb(238, 238, 238);
+    border-radius: 0px 10px 10px 0px;
+    transition:width .5s ease;
+}
+.div-menu:hover{
+    width: 206px;
+}
+.tabla1 table, .div-tabla table{
+    border-collapse: collapse;
+}
+.tabla1 td{
+    padding: 15px 14px 15px 12px;
+}
+.i1{color: #FFF041; background: #474747;}
+.i2{color: #FFA14A}
+.i3{color: #FF4A4A}
+.i4{color: #ed62ff}
+.i5{color: #ac31ff; font-size: 32px;}
+.i6{color: #5c4aff; font-size: 32px;}
+.over{
+    position: absolute;
+    top: 0px;
+    left: -65px;
+    width: 65px;
+    height: 65px;
+    background-color: #c4f6ff;
+    border-radius: 32.5px;
+    transition:width .5s ease-out;
+}
+.text{
+    position: relative;
+    padding-right: 30px;
+    padding-left: 7px;
+    overflow: hidden;
+    font-size: 23px;
+    cursor: pointer;
+}
+.text:hover .over{
+    width: 280px;
+}
+.text2{
+    /* position: relative; 
+    al psarle (mix-blend) "relative" no es necesario*/
+    mix-blend-mode: difference;
+}
+
+/* div formulario */
+.div{
+    display: none;
+    margin-left: 55px;
+    padding: 25px;
+}
+.ortopedic{
+    display: block;
+}
+.div h2{
+    margin-top: 0px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    font-family: Century Gothic;
+    font-size: 22px;
+    text-align: left;
+}
+.reportes h2{
+    font-size: 20px;
+}
+.reportes hr{
+    margin: 20px 0px;
+}
+
+/* inputs */
+.div-inputs input{
+    display: block;
+    height: 40px;
+    width: 400px;
+    margin: 0px auto 15px;
+    padding: 5px;
+    padding-left: 20px;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+.div-inputs input:focus{
+    box-shadow:5px 5px 10px 1px #d6d6d6 ;
+}
+
+/* botones */
+.butt{
+    width: 150px;
+    height: 40px;
+    margin: 10px;
+    font-family: 'Lucida Sans';
+    font-size: 16px;
+    font-weight: bold;
+    border-color: lightskyblue;
+    border-radius: 20px;
+    box-shadow: 0 0 10px 40px lightskyblue inset;
+    outline: 3px solid lightskyblue;
+    outline-offset: 3px;
+    cursor: pointer;
+    transition: all 150ms ease-in-out;
+}
+.butt:hover{
+    box-shadow: 0 0 10px 3px lightskyblue inset;
+}
+.butt-obt{
+    width: 100px;
+    height: 30px;
+    margin: 5px;
+    font-size: 13px;
+}
+.del{
+    width: 80px;
+    height: 28px;
+    margin: 0px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* tablas */
+.div-tabla table{
+    margin: auto;
+    margin-top: 12px;
+    overflow: hidden;
+    font-family: Bahnschrift Light;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0px 0px 10px 1px #727272 ;
+}
+.div-tabla th{
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight:normal;
+    background-color: #212653;
+    color: white;
+}
+.div-tabla td{
+    padding: 10px 15px;
+    font-size: 16px;
+} 
+.div-tabla input{
+    height: 20px;
+    width: 20px;
+} 
+.div-tabla tr:nth-child(even) {
+    background-color: #dddddd;
+}
