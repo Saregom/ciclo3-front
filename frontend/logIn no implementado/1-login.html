@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="1-script-login.js"></script>
+    <link rel="stylesheet" href="1-styles-login.css">
+    <title>login</title>
+</head>
+<body>
+    <div class="div divLogin">
+        <h1>Reservación de Ortesis</h1>
+        <h3>Log in</h3>
+        <form action="javascript:verificarClient();">
+            <input id="email1" type="email" placeholder="Email" required>
+            <input id="pass1" type="password" placeholder="Contraseña" required> 
+            <button class="btn login" >Ingresar</button>
+        </form>
+        <p>o</p>
+        <button class="btn register" onclick="changeDiv('.divSignin')">Registrarse</button>
+    </div>
+    <div class="div divSignin" style="display:none">
+        <h1>Reservación de Ortesis</h1>
+        <h3>Sign in</h3>
+        <form action="javascript:registerClient();">
+            <input id="name" type="text" placeholder="Nombre*" required>
+            <input id="email" type="email" placeholder="Email*" required>
+            <input id="pass" type="password" placeholder="Contraseña*" required>
+            <input id="age" type="number" placeholder="Edad">
+            <button class="btn login">Registrarse</button>
+        </form>
+        <hr>
+        <a class="backLink" href="javascript:changeDiv('.divLogin');">Ya tengo una cuenta</a>
+    </div>
+</body>
+</html>
